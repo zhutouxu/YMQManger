@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.hundsun.xuxp10575.beans.VipUser" table="tb_vipuser">
+  <id name="id" column="id">
+  <generator class="identity"></generator>
+  </id>
+  <property name="employno" type="string"/>
+  <property name="employname" type="string"/>
+  <property name="startdate" type="java.util.Date"/>
+  <property name="telephone" type="string"/>
+  <property name="mail" type= "string"/>
+  <property name="department" type="string"/>
+ </class>
+</hibernate-mapping>

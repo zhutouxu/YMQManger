@@ -1,0 +1,25 @@
+<div class="popup users-popup">
+    <div class="pages">
+        <div class="page">
+            <div class="page-content">
+                <div class="result">
+                    <div class="state animated signed"></div>
+                    <div class="list">
+                        <div class="location">
+                            <div class="left"><span>{{time}}</span></div>
+                            <div class="right"><span>{{placeNo}}号场地</span></div>
+                        </div>
+                        <ul v-show="items.length">
+                            <li v-for="item in items" v-bind:class="['row', item.state ? 'active' : '' ]">
+                                <div class="col-60"><span>{{item.userName}}</span></div>
+                                <div class="col-40"><span class="badge">{{item.signIn}}</span></div>
+                            </li>
+                        </ul>
+                        <div class="no-data" v-else>暂无数据</div>
+                    </div>
+                </div>
+                <div class="content-block"><a href="#" class="button btn-submit close-popup">返回</a></div>
+            </div>
+        </div>
+    </div>
+</div>

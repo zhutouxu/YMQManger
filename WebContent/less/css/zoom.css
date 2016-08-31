@@ -1,0 +1,123 @@
+.kline body {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+.kline .navbar-through .page-content,
+.kline .navbar-fixed .page-content {
+  padding: 0;
+  background: #fff;
+}
+.kline .buttons-row {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f7f7f7;
+  color: #adb5ba;
+  font-size: 14px;
+  font-weight: bold;
+  border-top: 1px solid #d4dee5 ;
+  z-index: 9999;
+}
+.kline .buttons-row a {
+  height: 40px;
+  line-height: 40px;
+  padding-bottom: 5px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  text-decoration: none;
+  color: #adb5ba;
+}
+.kline .buttons-row a.button {
+  border: 0;
+}
+.kline .buttons-row a.active {
+  background: none;
+  color: #e74645;
+  font-size: 14px;
+  border: 0;
+  border-bottom: 3px solid #e74645;
+}
+.kline .report {
+  height: 25px;
+  line-height: 25px;
+  border-bottom: 1px solid #000;
+}
+.kline .detail {
+  padding-left: 10px;
+  height: 40px;
+  line-height: 40px;
+}
+.kline .detail > div {
+  display: inline-block;
+  margin-right: 20px;
+}
+.kline .gpname {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+}
+.kline .gpname span {
+  font-size: 18px;
+  color: #999;
+  text-indent: 10px;
+}
+.kline .price,
+.kline .changep {
+  color: #e74645;
+  font-size: 18px;
+}
+.kline .tabs {
+  margin-top: 5px;
+  width: 100%;
+}
+.kline .close {
+  position: absolute;
+  right: 5px;
+  top: 0px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  width: 40px;
+  color: #e74645;
+}
+.kline .handicap {
+  position: absolute;
+  display: block;
+  top: 45px;
+  right: 10px;
+  width: 110px;
+  height: 220px;
+  /*写给不支持calc()的浏览器*/
+  z-index: 999;
+}
+.kline .handicap .title {
+  font-size: 12px;
+  padding-left: 10px;
+}
+.kline .tb-body {
+  text-align: center;
+  padding: 5px 0;
+}
+.kline .tb-body b {
+  font-weight: normal;
+}
+.kline .offer b {
+  color: #e74645;
+}
+.kline .tb-body span {
+  color: #2f2e34;
+}
+.kline .tb-body .row {
+  margin-bottom: 5px;
+  color: #a0a0a0;
+  font-size: 12px;
+}
+.kline .iconfont {
+  font-size: 40px;
+}
+.kline .time {
+  color: #a0a0a0;
+}
+/*# sourceMappingURL=..\less\zoom.css.map */

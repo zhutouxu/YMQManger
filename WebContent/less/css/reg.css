@@ -1,0 +1,84 @@
+/* module: reg css style by Administrator */
+.popup-reg {
+  width: 270px;
+  height: 290px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -145px 0 0 -135px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+}
+.popup-reg .popup-title {
+  width: 100%;
+  line-height: 30px;
+  font-size: 17px;
+  color: #000;
+  text-align: center;
+  padding-top: 10px;
+}
+.popup-reg input[type='tel'],
+.popup-reg input[type='text'],
+.popup-reg input[type='password'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: none;
+  background: none;
+  border-radius: 0 0 0 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  display: block;
+  padding: 0 0 0 5px;
+  margin: 0 auto;
+  width: 90%;
+  height: 43px;
+  color: #000;
+  font-size: 17px;
+  font-family: inherit;
+  border-bottom: 1px solid #C7C7C7;
+}
+.popup-reg .row {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.popup-reg .list-block {
+  width: 90%;
+  margin: 0 auto;
+}
+.popup-reg .mobile {
+  border: none !important;
+  width: 100% !important;
+}
+.popup-reg .list-block ul:before {
+  height: 0px;
+}
+.popup-reg .list-block ul:after {
+  background: #C7C7C7;
+  -webkit-transform: scaleY(1) !important;
+  transform: scaleY(1) !important;
+}
+.popup-reg .list-block .item-content {
+  height: 44px;
+  padding-left: 0;
+}
+.popup-reg .list-block .item-content .item-inner {
+  padding-right: 0;
+}
+.popup-reg .my-button {
+  width: 120px;
+}
+.icon-list {
+  font-size: 28px;
+}
+.icon-list:before {
+  margin: 0;
+}
+/* module: reg css --end */
+/*# sourceMappingURL=..\less\reg.css.map */

@@ -1,0 +1,42 @@
+<div class="bg-body">
+    <div class="main-content">
+        <div class="header-section">
+            <div class="header-section-top">
+                <div class="logo" ng-click="$state.go('home.combine')">
+                    <img src="images/logo.png" weight="50" height="30">&nbsp;&nbsp;
+                    <span class="text-color">你好，管理员！欢迎登录羽毛球报名系统管理后台！</span>
+                </div>
+                <div class="go-back">
+                    <a ui-sref="resetPwd">
+                        <span class="iconfont">&#xe60e;</span>
+                        	修改密码
+                    </a>
+                    <a ng-click="vm.exit()">
+                        <span class="iconfont">&#xe60b;</span>
+                        	退出
+                    </a>
+                </div>
+            </div>
+            <div class="header-section-bottom">
+                <ul class="header-title">
+                    <li><a style="color: #FFFFFF"><a style="color:#000000;" ui-sref="home"><i><img
+                            src="images/badminton.png" width="24" height="24"></i>羽毛球</a></a></li>
+                    <li style="background:rgba(100,100,100,0.70);" ><a style="color:#000000;"><i><img
+                            src="images/basketball.png" width="24" height="24"></i>篮球</a></li>
+                    <li style="background:rgba(100,100,100,0.70);" ><a style="color:#000000;"><i><img
+                            src="images/pingpong.png" width="24" height="24"></i>乒乓球</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="float-menu">
+            <a ui-sref="home.addUser"><h2 style="color:black;text-align:center;margin-top:50px;">添加用户</h2></a>
+            <a ui-sref="home.userManager"><h2 style="color:black;text-align:center;margin-top:50px;">用户管理</h2></a>
+            <a ui-sref="home.bookQry"><h2 style="color:black;text-align:center;margin-top:50px;">报名查询</h2></a>
+        </div>
+    </div>
+        <div class="wrap-content">
+            <div ui-view></div>
+        </div>
+    </div>
+</div>
+

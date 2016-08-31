@@ -1,0 +1,192 @@
+.photochose {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100% ;
+  overflow: auto;
+  background: #000;
+  /* jquery.Jcrop.min.css v0.9.10 (build:20120429) */
+}
+.photochose .page {
+  background: #000;
+}
+.photochose .photo-caokong {
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  height: 60px;
+  width: 100%;
+}
+.photochose .cancel-chose-photo {
+  width: 60px;
+  height: 60px;
+  font-size: 18px;
+  line-height: 60px;
+  color: #fff;
+  float: left;
+  margin-left: 20px;
+  font-weight: bold;
+}
+.photochose .send-chose-photo {
+  width: 60px;
+  height: 60px;
+  font-size: 18px;
+  line-height: 60px;
+  color: #fff;
+  float: right;
+  margin-right: 20px;
+  font-weight: bold;
+  text-align: right;
+}
+.photochose .jcrop-holder {
+  direction: ltr;
+  text-align: left;
+}
+.photochose .jcrop-vline,
+.photochose .jcrop-hline {
+  background: #ffffff url(../img/Jcrop.gif) top left repeat;
+  font-size: 0;
+  position: absolute;
+}
+.photochose .jcrop-vline {
+  height: 100%;
+  width: 1px!important;
+}
+.photochose .jcrop-hline {
+  height: 1px!important;
+  width: 100%;
+}
+.photochose .jcrop-vline.right {
+  right: 0;
+}
+.photochose .jcrop-hline.bottom {
+  bottom: 0;
+}
+.photochose .jcrop-handle {
+  background-color: #333;
+  border: 1px #eee solid;
+  font-size: 1px;
+}
+.photochose .jcrop-tracker {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  height: 100%;
+  width: 100%;
+}
+.photochose .jcrop-handle.ord-n {
+  left: 50%;
+  margin-left: -4px;
+  margin-top: -4px;
+  top: 0;
+}
+.photochose .jcrop-handle.ord-s {
+  bottom: 0;
+  left: 50%;
+  margin-bottom: -4px;
+  margin-left: -4px;
+}
+.photochose .jcrop-handle.ord-e {
+  margin-right: -4px;
+  margin-top: -4px;
+  right: 0;
+  top: 50%;
+}
+.photochose .jcrop-handle.ord-w {
+  left: 0;
+  margin-left: -4px;
+  margin-top: -4px;
+  top: 50%;
+}
+.photochose .jcrop-handle.ord-nw {
+  left: 0;
+  margin-left: -4px;
+  margin-top: -4px;
+  top: 0;
+}
+.photochose .jcrop-handle.ord-ne {
+  margin-right: -4px;
+  margin-top: -4px;
+  right: 0;
+  top: 0;
+}
+.photochose .jcrop-handle.ord-se {
+  bottom: 0;
+  margin-bottom: -4px;
+  margin-right: -4px;
+  right: 0;
+}
+.photochose .jcrop-handle.ord-sw {
+  bottom: 0;
+  left: 0;
+  margin-bottom: -4px;
+  margin-left: -4px;
+}
+.photochose .jcrop-dragbar.ord-n,
+.photochose .jcrop-dragbar.ord-s {
+  height: 7px;
+  width: 100%;
+}
+.photochose .jcrop-dragbar.ord-e,
+.photochose .jcrop-dragbar.ord-w {
+  height: 100%;
+  width: 7px;
+}
+.photochose .jcrop-dragbar.ord-n {
+  margin-top: -4px;
+}
+.photochose .jcrop-dragbar.ord-s {
+  bottom: 0;
+  margin-bottom: -4px;
+}
+.photochose .jcrop-dragbar.ord-e {
+  margin-right: -4px;
+  right: 0;
+}
+.photochose .jcrop-dragbar.ord-w {
+  margin-left: -4px;
+}
+.photochose .jcrop-light .jcrop-vline,
+.photochose .jcrop-light .jcrop-hline {
+  background: #FFF;
+  filter: alpha(opacity=70) !important;
+  opacity: .70!important;
+}
+.photochose .jcrop-light .jcrop-handle {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  background-color: #000;
+  border-color: #FFF;
+  border-radius: 3px;
+}
+.photochose .jcrop-dark .jcrop-vline,
+.photochose .jcrop-dark .jcrop-hline {
+  background: #000;
+  filter: alpha(opacity=70) !important;
+  opacity: .7!important;
+}
+.photochose .jcrop-dark .jcrop-handle {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  background-color: #FFF;
+  border-color: #000;
+  border-radius: 3px;
+}
+.photochose .jcrop-holder img,
+.photochose img.jcrop-preview {
+  max-width: none;
+}
+.photochose #preview {
+  width: 100%;
+}
+.photochose .hidden,
+.photochose .info {
+  display: none;
+}
+/* module: header css style by liwb */
+/* module: header css --end */
+/* module: bodyer css style by liwb */
+/* module: bodyer css --end */
+/*# sourceMappingURL=..\less\photochose.css.map */

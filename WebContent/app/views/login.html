@@ -1,0 +1,40 @@
+<div class="bg-body">
+    <div class="box">
+        <div class="login-logo">
+            <img src="images/logo.png" alt="恒生logo">
+        </div>
+        <div class="login-box">
+            <div class="text-center">
+                <h3 style="margin-top:50px;text-align: center">恒生电子俱乐部活动报名系统管理</h3>
+                <div class="error-indiv">
+                    <div class="error-div ng-cloak" ng-cloak  ng-show="loginError.error_flag">
+                        <span class="iconfont icon-2"></span><span>错误号:</span><span
+                            class="span-margin">{{loginError.error_code}}</span><span>错误信息:</span><span class="span-margin">{{loginError.error_info}}</span>
+                    </div>
+                </div>
+                <form method="post">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" id="username" name="username" ng-model="lg.form.username" ng-focus="loginError.error_flag=false"
+                                   class="form-control res-form-control" placeholder="用户名">
+                                    <span class="input-group-addon res-input-group-addon"><img
+                                            src="images/name.png"></span>
+                        </div>
+                        <div class="input-group" style="margin-top: 36px;">
+                            <input type="password" id="password" name="password" ng-model="lg.form.userpwd" ng-focus="loginError.error_flag=false"
+                                   autocomplete="off" class="form-control res-form-control" placeholder="密码">
+                                    <span class="input-group-addon res-input-group-addon"><img
+                                            src="images/lock.png"></span>
+                        </div>
+                        <div class="form-group form-actions" style="margin-top: 71px;">
+                            <a type="submit" class="btn btn-info btn-height-width" style="margin-left: 10px;"
+                                    ng-click="lg.submit()">
+                                <span>登录</span>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

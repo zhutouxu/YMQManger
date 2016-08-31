@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.hundsun.xuxp10575.beans.ActivityTime" table="tb_activitytime">
+  <id name="timeno" column="timeno">
+  <generator class="identity"></generator>
+  </id>
+  <property name="activity_type" type="char"/>
+  <property name="begintime" type="java.util.Date"/>
+  <property name="endtime" type="java.util.Date"/>
+  <set name="ymqapply" inverse="true" lazy="false">  
+      <key column="timeno" not-null="true"/>  
+      <one-to-many class="com.hundsun.xuxp10575.beans.YMQApply"/>  
+  </set>  
+  <set name="ymqassign" inverse="true" lazy="false">  
+      <key column="timeno" not-null="true"/>  
+      <one-to-many class="com.hundsun.xuxp10575.beans.YMQAssignResult"/>  
+  </set>     
+ </class>
+</hibernate-mapping>

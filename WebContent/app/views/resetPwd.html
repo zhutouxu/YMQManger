@@ -1,0 +1,23 @@
+﻿<div class="customerBG ">
+  <div class="customerDiv RPCustomerDiv reCustomerDiv">
+    <p class="companyDs">恒生电子俱乐部活动报名系统管理</p>
+    <div class="customerContent">
+      <h3>修改密码</h3>
+      <form class="RPForm reForm" name="resetForm" ng-submit="vm.reset()">
+        <ul>
+          <li>
+            <input type="password" placeholder="原密码" ng-model="vm.rpParams.oldpwd" autocomplete="off"  name="old_password" ng-blur="limit_password()">
+          </li>
+          <li>
+            <input type="password" placeholder="新密码" ng-model="vm.rpParams.newpwd" autocomplete="off"  name="new_password" ng-blur="limit_password()" required>
+          </li>
+          <li>
+            <input type="password" name="" placeholder="确认新密码" ng-model="vm.rpParams.newpwd_p" autocomplete="off" required>
+          </li>
+        </ul>
+        <input type="submit" class="btn btn-info" value="修改"/>
+        <input style="margin-top:20px;width:280px;" ui-sref="home" class="btn btn-info" value="取消"/>
+      </form>
+    </div>
+  </div>
+</div>

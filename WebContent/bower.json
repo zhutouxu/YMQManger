@@ -1,0 +1,35 @@
+{
+  "name": "ids",
+  "description": "ids is a investment adviser system",
+  "main": "",
+  "authors": [
+    "yejiaming <2508548688@qq.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "^2.2.0",
+    "angular": "^1.5.5",
+    "bootstrap": "^3.2.0",
+    "angular-animate": "^1.5.5",
+    "angular-cookies": "^1.5.5",
+    "angular-route": "^1.5.5",
+    "angular-sanitize": "^1.5.5",
+    "angular-touch": "^1.5.5",
+    "angular-ui-bootstrap-bower": "^1.1.2",
+    "ui-router":""
+  },
+  "exportsOverride": {
+    "bootstrap": {
+      "": "dist/css/bootstrap.css"
+    }
+  }
+}

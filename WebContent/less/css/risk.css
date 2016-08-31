@@ -1,0 +1,70 @@
+#riskContent .list-block {
+  counter-reset: options;
+}
+#riskContent .list-block ul:before {
+  height: 1px;
+}
+#riskContent .list-block li {
+  font-size: 15px;
+}
+#riskContent .list-block .item-media {
+  padding-bottom: 7px;
+  padding-right: 7px;
+  counter-increment: options;
+}
+#riskContent .list-block .item-media:before {
+  content: counter(options, upper-latin) ". ";
+}
+#riskContent .hidden {
+  display: none;
+}
+#circle_area {
+  position: relative;
+}
+.level {
+  position: relative;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #2f3944;
+}
+#retest {
+  width: 100px;
+  margin: 0 auto;
+}
+.vertical-align {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 90%;
+  /* Android */
+  width: calc(100% - 30px);
+}
+.risk-popup .info-content {
+  margin-top: -30px;
+  padding: 0 15px;
+}
+.risk-popup .fixed-bottom {
+  position: fixed;
+  bottom: 30px;
+  width: 90%;
+  /* Android */
+  width: calc(100% - 30px);
+}
+.risk-popup .info-content {
+  margin-top: -30px;
+  padding: 0 15px;
+}
+.risk-popup .info {
+  font-size: 18px;
+  text-align: center;
+}
+.risk-popup .info .desc {
+  font-size: 14px;
+}
+.risk-popup .score {
+  font-size: 40px;
+  color: #328deb;
+}
+/*# sourceMappingURL=..\less\risk.css.map */

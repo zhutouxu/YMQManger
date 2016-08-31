@@ -1,0 +1,46 @@
+.sse-list-title {
+  position: relative;
+}
+.sse-list-title .nSort {
+  position: absolute;
+  display: none;
+  left: 0%;
+  text-align: center;
+  background-color: #E74645;
+  color: #fff;
+}
+.no-data .open-search-link {
+  position: relative;
+  width: 98px;
+  height: 82px;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 20%;
+  color: #A0A0A0;
+}
+.no-data .open-search-link img {
+  display: block;
+  max-width: 100%;
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+.update-link .preloader {
+  width: 25px;
+  height: 25px;
+  margin-left: 25px;
+  margin-right: 10px;
+}
+#realBox .no-data {
+  font-size: 16px;
+  color: #26262a;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  opacity: .6;
+}
+/*# sourceMappingURL=..\less\ws-optional.css.map */

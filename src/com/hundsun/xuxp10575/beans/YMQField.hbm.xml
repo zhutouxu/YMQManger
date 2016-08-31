@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.hundsun.xuxp10575.beans.YMQField" table="tb_ymqfield">
+  <id name="fieldno" column="fieldno">
+  <generator class="identity"></generator>
+  </id>
+  <property name="fieldname" type="string"/>
+  <property name="enable" type="char"/>
+  <property name="uplimit" type="int"/>
+ </class>
+</hibernate-mapping>

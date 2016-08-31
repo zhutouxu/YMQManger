@@ -1,0 +1,66 @@
+<div class="main-content">
+    <div class="float-box">
+    	<div class="container-fluid">
+    		<h4><b>新增会员</b></h4>
+		    <from role="form" class="form-horizontal" name="viewPointForm">
+		        <div class="form-group" style="margin-top:20px;">
+		            <label class="col-sm-2 control-label"><span style="color:red;">* </span>会员员工号：</label>
+		            <div class="col-sm-3">
+		            	<input type="text" id="employno" name="employno" ng-model="lg.form.employno" class="form-control input-sm" 
+		            		   placeholder="请输入..." required="required">
+		            </div>
+		            <label class="col-sm-2 control-label"><span style="color:red;">* </span>会员姓名：</label>
+		            <div class="col-sm-3">
+		                <input type="text" id="employname" name="employname" ng-model="lg.form.employname" class="form-control input-sm" 
+		            		   placeholder="请输入..." required="required">
+		            </div>
+		            
+		        </div>
+		        <div class="form-group" style="margin-top:20px;">
+		            <label class="col-sm-2 control-label"><span style="color:red;">* </span>入会日期：</label>
+		            <div class="col-sm-3">
+		                <input type="text" id="startdate" name="startdate" ng-model="lg.form.startdate" class="form-control input-sm" 
+		            		   placeholder="请以2016-01-01格式输入..." required="required">
+		            </div>
+		            <label class="col-sm-2 control-label"><span style="color:red;">* </span>手机号：</label>
+		            <div class="col-sm-3">
+		                <input type="text" id="telephone" name="telephone" ng-model="lg.form.telephone" class="form-control input-sm" 
+		            		   placeholder="请输入..." required="required">
+		            </div>
+		            
+		        </div>
+		        <div class="form-group" style="margin-top:20px;">
+		            <label class="col-sm-2 control-label"><span style="color:red;">* </span>邮箱：</label>
+		            <div class="col-sm-3">
+		                <input type="text" id="mail" name="mail" ng-model="lg.form.mail" class="form-control input-sm" 
+		            		   placeholder="请输入..." required="required">
+		            </div>
+		            <label class="col-sm-2 control-label"><span style="color:red;">* </span>所属部门：</label>
+		            <div class="col-sm-3">
+		            	<select name="department" class="form-control input-sm" required="required"
+                                    ng-model="lg.form.department">
+                                <option value="">--请选择--</option>
+                                <option value="经纪业委会">经纪业委会</option>
+                                <option value="资管业委会">资管业委会</option>
+                                <option value="交易所业委会">交易所业委会</option>
+                                <option value="财富业委会">财富业委会</option>
+                                <option value="平台业委会">平台业委会</option>
+                                <option value="银行业委会">银行业委会</option>
+                                <option value="恒生科技">恒生科技</option>
+                                <option value="恒生数安">恒生数安</option>
+                        </select>
+		            </div>
+		            
+		        </div>
+		        <div class="form-group" style="margin-top:50px;padding-left:250px;">
+		        	<div class="col-sm-3">
+		                <a type="submit" ng-click="lg.submit()" class="query-button">保存</a>
+		            </div>
+		            <div class="col-sm-4">
+		                <a ui-sref="home" class="query-button">取消</a>
+		            </div>
+		        </div>
+		    </from>
+		</div>
+	</div>
+</div>

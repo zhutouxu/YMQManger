@@ -1,0 +1,29 @@
+.broker-popup .list-block input[type="text"],
+.broker-popup .list-block input[type="password"],
+.broker-popup .list-block input[type="email"],
+.broker-popup .list-block input[type="tel"],
+.broker-popup .list-block input[type="url"],
+.broker-popup .list-block input[type="date"],
+.broker-popup .list-block input[type="datetime-local"],
+.broker-popup .list-block input[type="number"],
+.broker-popup .list-block select,
+.broker-popup .list-block textarea,
+.broker-popup .list-block .item-title,
+.broker-popup .list-block .smart-select .item-after,
+.broker-popup .content-block-title {
+  font-size: 15px;
+}
+.broker-popup .content-block-title {
+  margin-top: 18px;
+  white-space: normal;
+  line-height: 20px;
+}
+.broker-popup .login-broker {
+  margin: 1em 0;
+  font-size: 18px;
+}
+.broker-popup .list-block .item-inner {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+/*# sourceMappingURL=..\less\broker.css.map */

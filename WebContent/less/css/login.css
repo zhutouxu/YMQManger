@@ -1,0 +1,76 @@
+/* module: login css style by Administrator */
+.popup .page-content {
+  background: #fff;
+}
+.popup-login {
+  width: 270px;
+  height: 250px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -125px 0 0 -135px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+}
+.popup-login .popup-title {
+  width: 100%;
+  line-height: 30px;
+  font-size: 17px;
+  color: #000;
+  text-align: center;
+  padding-top: 10px;
+}
+.popup-login input[type='tel'],
+.popup-login input[type='password'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: none;
+  background: none;
+  border-radius: 0 0 0 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  display: block;
+  padding: 0 0 0 5px;
+  margin: 0 auto;
+  width: 90%;
+  height: 43px;
+  color: #000;
+  font-size: 17px;
+  font-family: inherit;
+  border-bottom: 1px solid #C7C7C7;
+}
+.popup-login .row {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.popup-login .popup-bottom {
+  width: 100%;
+}
+.popup-bottom .reg-button {
+  width: 40%;
+  text-align: center;
+  margin: 0 auto;
+  border-bottom: 1px solid #4A90E2;
+  color: #4A90E2;
+  line-height: 30px;
+  padding-top: 10px;
+}
+.popup-reg.modal-out,
+.popup-login.modal-out {
+  -webkit-transform: translate3d(0, 200%, 0) !important;
+  transform: translate3d(0, 200%, 0) !important;
+  -webkit-transition: 0.4ms !important;
+  -o-transition: 0.4ms !important;
+  transition: 0.4ms !important;
+  -webkit-transition-duration: 0.4ms !important;
+  transition-duration: 0.4ms !important;
+}
+/* module: login css --end */
+/*# sourceMappingURL=..\less\login.css.map */

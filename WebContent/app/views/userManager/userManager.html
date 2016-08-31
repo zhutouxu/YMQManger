@@ -1,0 +1,58 @@
+<div class="main-content">
+    <div class="float-box">
+    	<div class="container-fluid">
+    		<h4><b>会员查询</b></h4>
+		    <form role="form" class="form-horizontal" name="userManagerForm">
+		        <div class="form-group" style="margin-top:20px;">
+		            <label class="col-sm-2 control-label">员工号：</label>
+		            <div class="col-sm-3">
+		            	<input type="text" id="employno" name="employno" ng-model="lg.form.employno" class="form-control input-sm" 
+		            		   placeholder="请输入...">
+		            </div>
+		            <div class="col-sm-3">
+		                <a type="submit" ng-click="lg.submit()" class="query-button">搜索</a>
+		            </div>
+		        </div>
+		        <div class="form-group">
+                <div class="col-sm-12">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>员工号</th>
+                            <th>姓名</th>
+                            <th>入会日期</th>
+                            <th>手机号</th>
+                            <th>邮箱</th>
+                            <th>部门</th>
+                            <th>操作</th>
+                        </tr>
+                        <tr ng-repeat="item in lg.resp">
+                            <td>{{item.employno}}</td>
+                            <td>{{item.employname}}</td>
+                            <td>{{item.startdate}}</td>
+                            <td>{{item.telephone}}</td>
+                            <td>{{item.mail}}</td>
+                            <td>{{item.department}}</td>
+                            <td style="width:75px;">
+                                <a type="button" ng-click="lg.modUser(item)" title="修改">
+                                    <span class="iconfont table-icon del-bgcolor">&#xe60e;</span>
+                                </a>
+                                <a type="button" ng-click="lg.del(item)" title="注销">
+                                    <span class="iconfont table-icon del-bgcolor">&#xe60d;</span>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                    <h4 ng-if="!lg.resp.length>0" class="small">暂无数据</h4>
+                        <div class="text-right">
+                            <uib-pagination total-items="ui.pagination.totalcount" previous-text="上一页"
+                                            items-per-page="ui.pagination.pagesize" next-text="下一页"
+                                            ng-model="ui.pagination.pageno" max-size="5" class="pagination-sm"
+                                            ng-change="ui.pagination.pageChange()"
+                                            boundary-link-numbers="true" rotate="false"></uib-pagination>
+                   		</div>
+                </div>
+            </div>
+		    </from>
+		</div>
+	</div>
+</div>

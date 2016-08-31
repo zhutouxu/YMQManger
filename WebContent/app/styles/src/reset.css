@@ -1,0 +1,472 @@
+.bgContainer {
+    background: #ffffff;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.text-dis {
+    font-size: 14px;
+    color: #080c0f;
+    margin-right: -10px;
+
+}
+
+.form-span {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0px 0px 20px 0px;
+}
+
+input:focus {
+    box-shadow: 0 0 1px #009ede !important;
+}
+
+select:focus {
+    box-shadow: 0 0 1px #009ede !important;
+}
+
+textarea:focus {
+    box-shadow: 0 0 1px #009ede !important;
+}
+
+.table-header {
+    background-color: #f6f8f8;
+}
+
+.table-margin {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/*---------------------------
+      滚动条样式
+-----------------------------*/
+*::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb { /**用于控制滚动条的样式**/
+    background: #babbc1;
+    border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: #9e9fa9; /**用于控制鼠标放到滚动条上时改变颜色**/
+}
+
+*::-webkit-scrollbar-thumb:active {
+    background: #737483; /**用于控制鼠标点击滚动条时改变样式**/
+}
+
+.form-title {
+    margin-top: 10px;
+    padding-bottom: 20px;
+}
+
+.form-header-left {
+    display: block;
+    background: #3b92e2;
+    width: 5px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.form-header-right {
+    font-size: 14px;
+    color: #080c0f;
+}
+
+.dialog-modal {
+    position: absolute;
+    left: 41%;
+    bottom: 50px;
+}
+
+.detail-button {
+    display: block;
+    float: left;
+    width: 55px;
+    height: 20px;
+    background: #0096d8;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.detail-button:hover {
+    background-color: #30bfff;
+    color: #ffffff;
+}
+
+.query-button {
+    display: block;
+    float: left;
+    width: 100px;
+    height: 30px;
+    background:#f84769;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 32px;
+    cursor: pointer;
+}
+
+.query-button:hover {
+    background-color: #30bfff;
+    color: #ffffff;
+}
+
+.add-button {
+    display: block;
+    float: left;
+    width: 100px;
+    height: 30px;
+    background:#f84769;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 14px;
+    text-align: center;
+    margin-left: 30px;
+    line-height: 32px;
+    cursor: pointer;
+}
+
+.add-button:hover {
+    background-color: #02dccd;
+    color: #ffffff;
+}
+
+.table-bordered .hover-change:hover {
+    background-color: #f4f4f4;
+}
+
+.table > tbody > tr.active > td {
+    background-color: #d9f1fb !important;
+}
+
+.table-icon {
+    display: block;
+    width: 22px;
+    height: 22px;
+    float: left;
+    margin-right: 5px;
+    border-radius: 4px;
+    font-size: 14px !important;
+    color: #ffffff !important;
+    padding: 1px 1px 1px 2px;
+    cursor: pointer;
+}
+
+.update-bgcolor {
+    background-color: #7266ba;
+}
+
+.del-bgcolor {
+    background-color: #f04f50;
+}
+
+.fuquan-bgcolor {
+    background-color: #00b0a4;
+}
+
+.forzen-bgcolor {
+    background-color: #4ABD4E
+}
+
+.unforzen-bgcolor {
+    background-color: #f04f50
+}
+
+.zhuxiao-bgcolor {
+    background-color: #f04f50;
+}
+
+.text-right li {
+    display: block;
+    float: left;
+    margin-left: 5px;
+}
+
+.large-Modal .modal-dialog {
+    width: 478px;
+    height: 336px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.res-input-sm {
+    width: 141px;
+    margin-left: -30px;
+}
+
+.margin-form-group {
+    margin-left: -45px !important;
+}
+
+/*---------------------------------
+             pop
+-----------------------------*/
+.favorPop.sysPop {
+    width: 540px;
+    height: 336px;
+}
+
+.favorPop.sysPop form {
+    margin: 20px 10px 10px 10px;
+}
+
+.favorPop {
+    position: relative;
+    width: 605px;
+    height: 448px;
+    margin-left: 50%;
+    left: -278px;
+    top: 50%;
+    margin-top: 0px;
+    border-radius: 4px;
+    background: #FFF;
+}
+
+.favorPop .popTab {
+    width: 100%;
+    padding: 0 10px 0 20px;
+    height: 40px;
+    line-height: 40px;
+    background: #0096d8;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.favorPop .tabTitle {
+    font-size: 16px;
+    color: #ffffff;
+
+}
+
+.favorPop .iconfont {
+    font-size: 18px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 0px solid #ccc;
+    border: 0px solid rgba(0, 0, 0, .15);
+    border-radius: 0px;
+    -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, .175);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, .175);
+}
+
+.caret {
+    display: block;
+    float: left;
+    margin-top: 6px;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 8px dashed;
+    border-top: 4px solid \9;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+}
+
+.res-dropdown-toggle {
+    display: block;
+    width: 155px;
+    height: 32px;
+    background-color: #0096d8;
+    color: #ffffff !important;
+    margin-top: 10px;
+    padding-right: 40px;
+}
+
+.dropdown-menu > li > a {
+    padding-left: 5px;
+}
+
+.dropdown-menu > li > a:hover {
+    background-color: #0096d8;
+    color: #ffffff;
+}
+
+.role-set-div {
+    border: 1px solid #dfe5e7;
+    margin-top: 10px;
+    padding: 20px 0px 20px 30px;
+}
+
+.role-set-label {
+    padding-top: 4px !important;
+}
+
+.role-set-ul {
+    list-style: none;
+    text-decoration: none;
+}
+
+.role-set-ul li {
+    margin-top: 16px;
+}
+
+.tree-image-color {
+    color: #8ca0ab !important;
+    font-size: 18px !important;
+}
+
+.modal-content {
+    height: 0px;
+}
+
+.table th, .table tr, .table td {
+    text-align: center;
+}
+
+.calendar {
+    height: 30px;
+    padding: 0px;
+}
+
+.dialog-span {
+    display: block;
+    padding-top: 8px;
+}
+
+/*---------------------------
+      radio样式
+---------------------------*/
+
+.ILBStyle,
+.ILRStyle {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    float: left;
+    margin-right: 5px;
+}
+
+.ILBStyle input,
+.ILRStyle input {
+    display: none;
+}
+
+.ILBStyle label,
+.ILRStyle label {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 14px;
+    height: 14px;
+    border-color: transparent;
+    max-width: none;
+    cursor: pointer;
+}
+
+.ILBStyle {
+    border: 1px solid #1e79be;
+}
+
+.ILBStyle input[type="checkbox"]:checked + label {
+    border: solid 1px #1e79be;
+}
+
+.ILBStyle input[type="checkbox"]:checked + label:after {
+    display: block;
+    content: '';
+    border: solid 1px #1e79be;
+    position: absolute;
+    top: 0px;
+    left: 4px;
+    width: 5px;
+    height: 9px;
+    transform: rotate(45deg);
+    border-width: 0px 1px 1px 0;
+}
+
+.ILRStyle {
+    top: 4px;
+}
+
+.ILRStyle label {
+    border-radius: 50%;
+}
+
+.ILRStyle input[type="radio"] + label {
+    border: solid 1px #1e79be;
+}
+
+.ILRStyle input[type="radio"]:checked + label {
+    border: solid 1px #1e79be;
+    border-radius: 50%;
+}
+
+.ILRStyle input[type="radio"]:checked + label:after {
+    display: block;
+    content: '';
+    background: #1e79be;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+/*---------------------------------------------
+         删除弹出框界面样式
+---------------------------------------------*/
+.del {
+    width: 455px;
+    height: 278px;
+}
+
+.del .content {
+    width: 100%;
+    min-height: 148px;
+    max-height: 188px;
+    height: auto;
+    text-align: center;
+    padding: 70px 160px;
+    margin-top: 5px;
+    overflow: auto;
+}
+
+.del .massage {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 18px;
+    color: #666b6e;
+    width: 100%;
+    overflow: auto;
+}
+
+.del .dialog-modal {
+    position: absolute;
+    left: 38%;
+    bottom: 50px;
+}

@@ -1,0 +1,63 @@
+<div class="pages">
+	<div data-page="signUp" class="page page-sign-up">
+        <div class="page-content">
+            <header class="header">
+                <div class="media">
+                    <div class="media-left">
+                        <span></span>
+                    </div>
+                    <div class="media-body">
+                        <div class="list-block">
+                            <ul>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">员工号:</div>
+                                            <div class="item-input">
+                                                <span id="userId"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content edit-mobile">
+                                        <div class="item-inner">
+                                            <div class="item-title label">手机号:</div>
+                                            <div class="item-input">
+                                                <span id="mobile"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="location time-title">
+                <div class="left"><i class="icon icon-time"></i>选择时间段</div>
+                <div class="right"><span class="time"></span></div>
+            </div>
+            <!-- Swiper -->
+            <div class="swiper-container times-box">
+                <div class="swiper-wrapper" v-if="items.length !== 0">
+                    <div class="swiper-slide" v-for="item in items" data-applyType="{{item.applyType}}">
+                        <div class="media vertical">
+                            <div class="media-left child{{$index}}">
+                                <span></span>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">{{item.desc}}<i class="icon icon-select"></i></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="no-data" v-else>
+                    暂无可报名数据
+                </div>
+            </div>
+            <div class="content-block"><a href="#" class="button btn-submit">报名</a></div>
+        </div>
+
+	</div>
+</div>

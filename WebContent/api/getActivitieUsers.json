@@ -1,0 +1,17 @@
+{
+    "return_code": "0", 
+    "return_msg": "查询成功", 
+    "data": [
+        {
+            "userName": "张三(14717)",
+            "signIn": "已签到"
+        }, 
+        {
+            "userName": "李四(4717)",
+            "signIn": "未签到"
+        }
+
+
+    ],
+  "time": "17:30-18:30"
+}

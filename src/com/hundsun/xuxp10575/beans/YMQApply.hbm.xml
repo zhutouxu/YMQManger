@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.hundsun.xuxp10575.beans.YMQApply" table="tb_ymqapply">
+  <id name="applyno" column="applyno">
+  <generator class="identity"></generator>
+  </id>
+  <property name="applydate" type="java.util.Date"/>
+  <property name="employno" type="string"/>
+  <!--property name="timeno" type="int"/-->
+  <property name="vipflag" type="char"/>
+  <property name="applystatus" type="string"/>
+  <many-to-one name="activitytime" class="com.hundsun.xuxp10575.beans.ActivityTime" column="timeno" lazy="false"></many-to-one>
+ </class>
+</hibernate-mapping>

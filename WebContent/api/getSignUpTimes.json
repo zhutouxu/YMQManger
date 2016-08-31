@@ -1,0 +1,26 @@
+{
+    "return_code": "0",
+    "return_msg": "成功",
+    "data": [
+        {
+            "applyType": 1,
+            "desc": "17:30-18:30",
+            "id": 1
+        },
+        {
+            "applyType": 2,
+            "desc": "18:30-19:30",
+            "id": 2
+        },
+        {
+            "applyType": 3,
+            "desc": "19:30-20:30",
+            "id": 3
+        },
+        {
+            "applyType": 4,
+            "desc": "20:30-21:30",
+            "id": 4
+        }
+    ]
+}
