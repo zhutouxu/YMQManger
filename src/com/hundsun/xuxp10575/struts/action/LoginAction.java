@@ -1,12 +1,7 @@
 package com.hundsun.xuxp10575.struts.action;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.struts2.ServletActionContext;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import com.hundsun.xuxp10575.service.*;
 import com.hundsun.xuxp10575.struts.form.ReturnInfo2;
 import com.hundsun.xuxp10575.struts.form.ReturnToken;
@@ -16,11 +11,16 @@ import com.opensymphony.xwork2.ActionSupport;
 @SuppressWarnings("serial")
 public class LoginAction extends ActionSupport
 {
+	private LoginManager mgr;
 	private String username;
 	private String userpwd;
 	private ReturnInfo2 returnInfo2;
 	private ReturnToken returnToken;
 	
+	public void setMgr(LoginManager mgr) {
+		this.mgr = mgr;
+	}
+
 	public String getUsername()
 	{
 		return username;
@@ -53,18 +53,11 @@ public class LoginAction extends ActionSupport
 	public String execute() throws Exception 
 	{
 		HttpServletRequest request = ServletActionContext.getRequest();
-		HttpServletResponse response = ServletActionContext.getResponse();
-		//LoginManager loginManager = new LoginManager();
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		LoginManager loginManager = context.getBean("loginManager",LoginManager.class);
-		if(loginManager.DoLogin(username, userpwd))
+		if(mgr.DoLogin(username, userpwd))
 		{
 			returnToken = new ReturnToken();
 			returnToken.setUser_id(username);
 			request.getSession().setAttribute(SessionAttribute.USER_ID, username);
-			returnInfo2 = new ReturnInfo2();
-			returnInfo2.setError_code("0");
-			returnInfo2.setError_info("登录成功！");
 			return SUCCESS;
 		}
 		else

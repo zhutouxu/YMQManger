@@ -3,22 +3,29 @@ package com.hundsun.xuxp10575.utils;
 import java.io.FileInputStream;
 import java.util.Calendar;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.w3c.dom.Document;
 
 public class MyListener implements ServletContextListener 
 {
 	private static final long PERIOD_DAY = 24 * 60 * 60 * 1000;  
 	private Timer timer;
+	private TimerTask task;
+	public void setTask(TimerTask task) {
+		this.task = task;
+	}
+
 	@Override
 	public void contextInitialized(ServletContextEvent sce) 
 	{
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		timer = new Timer();
 		Calendar calendar = Calendar.getInstance();
 		int hour=0,minute=0;
@@ -28,13 +35,14 @@ public class MyListener implements ServletContextListener
 		calendar.set(Calendar.HOUR_OF_DAY, hour);
 		calendar.set(Calendar.MINUTE, minute);
 		calendar.set(Calendar.SECOND,0);
-		timer.schedule(new AssignTask(), calendar.getTime(),PERIOD_DAY);	
+		task = WebApplicationContextUtils.getWebApplicationContext(sce.getServletContext()).getBean(AssignTask.class);
+		timer.schedule(task, calendar.getTime(),PERIOD_DAY);	
 	}
 
 	@Override
 	public void contextDestroyed(ServletContextEvent sce) 
 	{
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		timer.cancel();
 	}
 	

@@ -2,6 +2,8 @@ package com.hundsun.xuxp10575.struts.form;
 
 import java.util.Date;
 
+import org.apache.struts2.json.annotations.JSON;
+
 public class QryVipUserReturn 
 {
 	private String id;
@@ -30,6 +32,7 @@ public class QryVipUserReturn
 	public void setEmployname(String employname) {
 		this.employname = employname;
 	}
+	@JSON(format="yyyy-MM-dd")
 	public Date getStartdate() {
 		return startdate;
 	}

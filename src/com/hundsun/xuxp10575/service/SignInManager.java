@@ -6,13 +6,20 @@ import java.util.List;
 import com.hundsun.xuxp10575.beans.ActivityTime;
 import com.hundsun.xuxp10575.beans.YMQAssignResult;
 import com.hundsun.xuxp10575.constant.SignStatus;
-import com.hundsun.xuxp10575.dao.hibernateQuery;
+import com.hundsun.xuxp10575.dao.BaseDao;
 import com.hundsun.xuxp10575.utils.TimeParse;
 
 public class SignInManager 
 {
-	private QryManager qryManager = new QryManager();
+	private BaseDao<YMQAssignResult> ymqresultDao;
+	private QryManager qryManager;
 	
+	public void setYmqresultDao(BaseDao<YMQAssignResult> ymqresultDao) {
+		this.ymqresultDao = ymqresultDao;
+	}
+	public void setQryManager(QryManager qryManager) {
+		this.qryManager = qryManager;
+	}
 	public String YMQSignIn(String employno)
 	{
 		String return_msg = null;
@@ -57,10 +64,9 @@ public class SignInManager
 		return return_msg;
 	}
 	private boolean Dosign(YMQAssignResult result)
-	{
-		hibernateQuery<YMQAssignResult> hQuery = new hibernateQuery<YMQAssignResult>();		
+	{		
 		result.setSignstatus(SignStatus.SIGNYES);
-		return hQuery.DoUpdate(result);
+		return ymqresultDao.DoUpdate(result);
 	}
 	private int CheckTime(ActivityTime time)
 	{

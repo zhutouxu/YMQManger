@@ -11,8 +11,13 @@ import com.hundsun.xuxp10575.utils.SaltHash;
 
 public class LoginManager 
 {
-	private hibernateQuery<Admin> hQuery = new hibernateQuery<Admin>();
+	//private hibernateQuery<Admin> adminDao = new hibernateQuery<Admin>();
+	private BaseDao<Admin> adminDao;
 	
+	public void setAdminDao(BaseDao<Admin> adminDao) {
+		this.adminDao = adminDao;
+	}
+
 	public boolean DoLogin(String name, String passwd)
 	{
 		List<SimpleExpression> filters = new LinkedList<SimpleExpression>();
@@ -21,7 +26,7 @@ public class LoginManager
 			filters.add(Restrictions.eq("password", passwd));
 		else			
 			filters.add(Restrictions.eq("password", SaltHash.getMd5(passwd)));
-		List<Admin> lists = hQuery.DoQuery(filters,new Admin());
+		List<Admin> lists = adminDao.DoQuery(filters,new Admin());
 		if(lists.size() > 0)
 			return true;
 		return false;
@@ -35,12 +40,12 @@ public class LoginManager
 			filters.add(Restrictions.eq("password", OldPwd));
 		else			
 			filters.add(Restrictions.eq("password", SaltHash.getMd5(OldPwd)));
-		List<Admin> lists = hQuery.DoQuery(filters,new Admin());	
+		List<Admin> lists = adminDao.DoQuery(filters,new Admin());	
 		if(lists.size() <= 0)
 			return -1;
 		Admin admin = lists.get(0);
 		admin.setPassword(SaltHash.getMd5(NewPwd));
-		if(hQuery.DoUpdate(admin))
+		if(adminDao.DoUpdate(admin))
 			return 0;
 		else
 			return -1;

@@ -1,6 +1,8 @@
 package com.hundsun.xuxp10575.beans;
 
-public class Admin
+import java.io.Serializable;
+
+public class Admin implements Serializable
 {
 	private String id;
 	private String name;

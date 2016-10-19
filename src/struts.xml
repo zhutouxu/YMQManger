@@ -22,7 +22,7 @@
     
     <package name="ymqmanager" extends="json-default">
 
-        <action name="login" class="com.hundsun.xuxp10575.struts.action.LoginAction">
+        <action name="login" class="loginAction">
         	<result name="success" type="json">
         		<param name="root">returnToken</param>       		
         	</result>
@@ -30,7 +30,75 @@
         		<param name="root">returnInfo2</param>       		
         	</result>        	
         </action>
-
+        <action name="changePwd" class="changePwd">
+        	<result type="json">
+        		<param name="root">returnInfo</param>       		
+        	</result>        	
+        </action>
+        <action name="logout" class="logout">     	
+        </action>
+        <action name="addvipuser" class="addvipuser">
+        	<result type="json">
+        		<param name="root">returnInfo2</param>       		
+        	</result>        	
+        </action>
+        <action name="updatevipuser" class="updatevipuser">      	
+        </action>                    
+        <action name="delvipuser" class="delvipuser">
+        	<result type="json">
+        		<param name="root">returnInfo2</param>       		
+        	</result>        	
+        </action>       
+        <action name="qryvipuser" class="qryvipuser">
+        	<result type="json">
+        		<param name="root">returndatas</param>       		
+        	</result>        	
+        </action>  
+        <action name="qryvipuser" class="qryvipuser">
+        	<result type="json">
+        		<param name="root">returndatas</param>       		
+        	</result>        	
+        </action>                       
+        <action name="getapplyinfo" class="getapplyinfo">
+        	<result type="json">
+        		<param name="root">applyInfoReturns</param>       		
+        	</result>        	
+        </action>
+        <action name="getSignUpFields" class="qryfields">
+        	<result type="json">
+        		<param name="root">returndata</param>       		
+        	</result>        	
+        </action>        
+        <action name="searchSignUp" class="qryapplyinfo">
+        	<result type="json">
+        		<param name="root">returnInfo</param>       		
+        	</result>        	
+        </action>                  
+        <action name="submitSignUp" class="addymqapply">
+        	<result type="json">
+        		<param name="root">returnInfo</param>       		
+        	</result>        	
+        </action>
+        <action name="cancelSignUp" class="cancelymqapply">
+        	<result type="json">
+        		<param name="root">returnInfo</param>       		
+        	</result>        	
+        </action>           
+        <action name="submitSignIn" class="ymqsignin">
+        	<result type="json">
+        		<param name="root">returnInfo</param>       		
+        	</result>        	
+        </action>            
+        <action name="getActivitieUsers" class="qryactivityuser">
+        	<result type="json">
+        		<param name="root">returninfo</param>       		
+        	</result>        	
+        </action> 
+        <action name="getSignUpTimes" class="qrytime">
+        	<result type="json">
+        		<param name="root">returndata</param>       		
+        	</result>        	
+        </action>                       
     </package>
 </struts>
 

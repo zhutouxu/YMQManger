@@ -1,52 +1,76 @@
 package com.hundsun.xuxp10575.struts.action;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
 import com.hundsun.xuxp10575.beans.ActivityTime;
 import com.hundsun.xuxp10575.beans.YMQApply;
 import com.hundsun.xuxp10575.beans.YMQAssignResult;
 import com.hundsun.xuxp10575.beans.YMQField;
 import com.hundsun.xuxp10575.service.QryManager;
 import com.hundsun.xuxp10575.struts.form.ApplyInfoReturn;
-import com.hundsun.xuxp10575.struts.form.GetApplyInfoForm;
-import com.hundsun.xuxp10575.utils.JsonDateValueProcessor;
 import com.hundsun.xuxp10575.utils.TimeParse;
+import com.opensymphony.xwork2.ActionSupport;
 import com.hundsun.xuxp10575.constant.ApplyStatus;
 import com.hundsun.xuxp10575.constant.SignStatus;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JsonConfig;
-
-public class GetApplyInfoAction extends Action 
+@SuppressWarnings("serial")
+public class GetApplyInfoAction extends ActionSupport 
 {
+	private String applystatus = ApplyStatus.APPLYDEFALUT;
+	private String signstatus = SignStatus.SIGNDEFALUT;
+	private int timeno;
+	private int fieldno;
+	private int pageno;
+	private int pagesize;
+	private QryManager qryManager;
+	private List<ApplyInfoReturn> applyInfoReturns;
 
+	public List<ApplyInfoReturn> getApplyInfoReturns() {
+		return applyInfoReturns;
+	}
+	public void setQryManager(QryManager qryManager) {
+		this.qryManager = qryManager;
+	}
+	public String getApplystatus() {
+		return applystatus;
+	}
+	public void setApplystatus(String applystatus) {
+		this.applystatus = applystatus;
+	}
+	public String getSignstatus() {
+		return signstatus;
+	}
+	public void setSignstatus(String signstatus) {
+		this.signstatus = signstatus;
+	}
+	public int getTimeno() {
+		return timeno;
+	}
+	public void setTimeno(int timeno) {
+		this.timeno = timeno;
+	}
+	public int getFieldno() {
+		return fieldno;
+	}
+	public void setFieldno(int fieldno) {
+		this.fieldno = fieldno;
+	}
+	public int getPageno() {
+		return pageno;
+	}
+	public void setPageno(int pageno) {
+		this.pageno = pageno;
+	}
+	public int getPagesize() {
+		return pagesize;
+	}
+	public void setPagesize(int pagesize) {
+		this.pagesize = pagesize;
+	}
 	@Override
-	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception 
+	public String execute() throws Exception 
 	{
-		GetApplyInfoForm inputparam = (GetApplyInfoForm)form;
-		String applystatus=ApplyStatus.APPLYDEFALUT,signstatus = SignStatus.SIGNDEFALUT;
-		int timeno=0,fieldno=0,pageno=0,pagesize=0;
-		if(form != null)
-		{
-			applystatus = inputparam.getApplystatus() == null ? applystatus:inputparam.getApplystatus();
-			signstatus = inputparam.getSignstatus() == null ? applystatus:inputparam.getSignstatus();
-			timeno = inputparam.getTimeno();
-			fieldno = inputparam.getFieldno();
-			pageno = inputparam.getPageno();
-			pagesize = inputparam.getPagesize();
-		}
-		List<ApplyInfoReturn> applyInfoReturns = new ArrayList<ApplyInfoReturn>();
-		QryManager qryManager = new QryManager();
+		applyInfoReturns = new ArrayList<ApplyInfoReturn>();
 		List<ActivityTime> times = qryManager.QryActivityTime(timeno);
 		List<YMQField> fields = qryManager.QryYMQField(fieldno);
 		for(ActivityTime time : times)
@@ -87,13 +111,12 @@ public class GetApplyInfoAction extends Action
 				applyInfoReturns.add(info);
 			}
 		}
-		//PageQryApplyInfoReturn returndata = new PageQryApplyInfoReturn();
 		int totalcount = applyInfoReturns.size();
 		if(pageno != 0 && pagesize != 0)
 		{
 			int fromindex = (pageno-1)*pagesize;
 			if(fromindex > totalcount)
-				return super.execute(mapping, form, request, response);
+				return SUCCESS;
 			int toindex = pageno*pagesize;
 			if(pageno*pagesize  > totalcount)
 				toindex = totalcount;
@@ -102,16 +125,9 @@ public class GetApplyInfoAction extends Action
 		for(int i=0;i<applyInfoReturns.size();i++)
 		{
 			applyInfoReturns.get(i).setTotalcount(totalcount);
-		}
-		//returndata.setTotal_count(totalcount);		
-		JsonConfig jsonConfig = new JsonConfig();
-		jsonConfig.registerJsonValueProcessor(Date.class, new JsonDateValueProcessor());
-		JSONArray jsonArray = JSONArray.fromObject(applyInfoReturns,jsonConfig);
-		//JSONObject jsondata = JSONObject.fromObject(returndata, jsonConfig);
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write(jsonArray.toString());
+		}	
 		// TODO 
-		return super.execute(mapping, form, request, response);
+		return SUCCESS;
 	}
 	
 	

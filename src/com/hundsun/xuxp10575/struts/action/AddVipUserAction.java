@@ -4,41 +4,77 @@ import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-
-import com.hundsun.xuxp10575.struts.form.AddVipUserForm;
 import com.hundsun.xuxp10575.struts.form.ReturnInfo2;
-
-import net.sf.json.JSONObject;
-
+import com.opensymphony.xwork2.ActionSupport;
 import com.hundsun.xuxp10575.beans.VipUser;
 import com.hundsun.xuxp10575.service.VipUserManager;
 
-public class AddVipUserAction extends Action 
+@SuppressWarnings("serial")
+public class AddVipUserAction extends ActionSupport 
 {
-
+	private VipUserManager vipmgr;
+	private String employno;
+	private String employname;
+	private String startdate;
+	private String telephone;
+	private String mail;
+	private String department;
+	private ReturnInfo2 returnInfo2;
+	
+	public void setVipmgr(VipUserManager vipmgr) {
+		this.vipmgr = vipmgr;
+	}
+	public String getEmployno() {
+		return employno;
+	}
+	public void setEmployno(String employno) {
+		this.employno = employno;
+	}
+	public String getEmployname() {
+		return employname;
+	}
+	public void setEmployname(String employname) {
+		this.employname = employname;
+	}
+	public String getStartdate() {
+		return startdate;
+	}
+	public void setStartdate(String startdate) {
+		this.startdate = startdate;
+	}
+	public String getTelephone() {
+		return telephone;
+	}
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+	public String getMail() {
+		return mail;
+	}
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	public String getDepartment() {
+		return department;
+	}
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+	public ReturnInfo2 getReturnInfo2() {
+		return returnInfo2;
+	}
 	@Override
-	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception 	
+	public String execute() throws Exception 	
 	
 	{
-		AddVipUserForm addVipUserForm = (AddVipUserForm)form;
 		VipUser user = new VipUser();
-		VipUserManager vipUserManager = new VipUserManager();
-		user.setEmployno(addVipUserForm.getEmployno());
-		user.setEmployname(addVipUserForm.getEmployname());
+		user.setEmployno(employno);
+		user.setEmployname(employname);
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		String datestr = addVipUserForm.getStartdate();
 		Date date = null;
 		long datelong;
 		try{
-			datelong = format.parse(datestr).getTime();
+			datelong = format.parse(startdate).getTime();
 			date = new Date(datelong);
 		}
 		catch(ParseException exception)
@@ -46,19 +82,16 @@ public class AddVipUserAction extends Action
 			date = new Date();
 		}
 		user.setStartdate(date);
-		user.setTelephone(addVipUserForm.getTelephone());
-		user.setMail(addVipUserForm.getMail());
-		user.setDepartment(addVipUserForm.getDepartment());
-		if(!vipUserManager.AddVipUser(user))
+		user.setTelephone(telephone);
+		user.setMail(mail);
+		user.setDepartment(department);
+		if(!vipmgr.AddVipUser(user))
 		{
-			ReturnInfo2 returnInfo2 = new ReturnInfo2();
+			returnInfo2 = new ReturnInfo2();
 			returnInfo2.setError_code("-101");
-			returnInfo2.setError_info("用户已存在！");
-			JSONObject jsondata = JSONObject.fromObject(returnInfo2);
-			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write(jsondata.toString());				
+			returnInfo2.setError_info("用户已存在！");		
 		}
-		return super.execute(mapping, addVipUserForm, request, response);
+		return SUCCESS;
 	}
 	
 }

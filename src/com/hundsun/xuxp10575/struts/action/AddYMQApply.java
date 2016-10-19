@@ -2,45 +2,49 @@
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-
 import com.hundsun.xuxp10575.beans.ActivityTime;
 import com.hundsun.xuxp10575.beans.YMQApply;
 import com.hundsun.xuxp10575.constant.ApplyStatus;
-import com.hundsun.xuxp10575.service.ApplyEnum;
-import com.hundsun.xuxp10575.service.ApplyManager;
+import com.hundsun.xuxp10575.service.IApplySvr;
 import com.hundsun.xuxp10575.service.QryManager;
-import com.hundsun.xuxp10575.struts.form.AddYMQApplyForm;
 import com.hundsun.xuxp10575.struts.form.ReturnInfo;
 import com.hundsun.xuxp10575.utils.TimeParse;
+import com.opensymphony.xwork2.ActionSupport;
 
-import net.sf.json.JSONObject;
-
-public class AddYMQApply extends Action 
+@SuppressWarnings("serial")
+public class AddYMQApply extends ActionSupport 
 {
+	private IApplySvr applysvr;
+	private QryManager qryManager;
+	private String userId;
+	private int signUpId;
+	private ReturnInfo returnInfo;
+	public void setApplysvr(IApplySvr applysvr) {
+		this.applysvr = applysvr;
+	}
+	public void setQryManager(QryManager qryManager) {
+		this.qryManager = qryManager;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public int getSignUpId() {
+		return signUpId;
+	}
+	public void setSignUpId(int signUpId) {
+		this.signUpId = signUpId;
+	}	
+	public ReturnInfo getReturnInfo() {
+		return returnInfo;
+	}
 	@Override
-	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception 
+	public String execute() throws Exception 
 	{
-		AddYMQApplyForm applyForm = (AddYMQApplyForm)form;
-		String UserId = null;
-		int SignUpId = 0;
-		if(applyForm != null)
-		{
-			UserId = applyForm.getUserId();
-			SignUpId = applyForm.getSignUpId();
-		}
-		ApplyManager applyManager = new ApplyManager(ApplyEnum.YMQApplySvr);
-		QryManager qryManager = new QryManager();
-		ReturnInfo returnInfo = new ReturnInfo();
-		//String UserId = request.getSession().getAttribute(SessionAttribute.USER_ID).toString();
-		List<YMQApply> applylists = qryManager.QryApply(UserId);
+		returnInfo = new ReturnInfo();
+		List<YMQApply> applylists = qryManager.QryApply(userId);
 		boolean haveapply = false; 
 		if(applylists.size() > 0)
 		{
@@ -58,7 +62,7 @@ public class AddYMQApply extends Action
 		}
 		if(!haveapply)
 		{
-			boolean result = applyManager.AddApply(UserId,SignUpId);
+			boolean result = applysvr.AddApply(userId,signUpId);
 			if(result)
 			{
 				returnInfo.setReturn_code("0");
@@ -69,12 +73,9 @@ public class AddYMQApply extends Action
 				returnInfo.setReturn_code("-1");
 				returnInfo.setReturn_msg("报名失败！");
 			}
-		}
-		JSONObject jsondata = JSONObject.fromObject(returnInfo);
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write(jsondata.toString());		
+		}	
 		// TODO 自动生成的方法存根
-		return super.execute(mapping, form, request, response);
+		return SUCCESS;
 	}
 
 }

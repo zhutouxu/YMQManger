@@ -7,35 +7,39 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.SimpleExpression;
 
 import com.hundsun.xuxp10575.beans.VipUser;
-import com.hundsun.xuxp10575.dao.hibernateQuery;
+import com.hundsun.xuxp10575.dao.BaseDao;
 
 public class VipUserManager 
 {
-	private hibernateQuery<VipUser> hQuery = new hibernateQuery<VipUser>();
+	private BaseDao<VipUser> vipuserDao;
 	
+	public void setVipuserDao(BaseDao<VipUser> vipuserDao) {
+		this.vipuserDao = vipuserDao;
+	}
+
 	public boolean AddVipUser(VipUser user)
 	{		
-		return hQuery.DoAdd(user);
+		return vipuserDao.DoAdd(user);
 	}
 	
 	public boolean EditVipUser(VipUser user)
 	{
-		return hQuery.DoUpdate(user);
+		return vipuserDao.DoUpdate(user);
 	}
 	
 	public boolean DelVipUser(VipUser user)
 	{		
-		return hQuery.DoDelete(user);
+		return vipuserDao.DoDelete(user);
 	}
 	public List<VipUser> Query(String employno)
 	{
 		if(employno == null || employno.isEmpty())
-			return hQuery.DoQuery(null,new VipUser());
+			return vipuserDao.DoQuery(null,new VipUser());
 		else
 		{
 			List<SimpleExpression> filters = new LinkedList<SimpleExpression>();
 			filters.add(Restrictions.eq("employno", employno));
-			return hQuery.DoQuery(filters,new VipUser());
+			return vipuserDao.DoQuery(filters,new VipUser());
 		}
 	}
 }

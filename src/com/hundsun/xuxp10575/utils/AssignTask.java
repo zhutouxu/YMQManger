@@ -2,17 +2,20 @@ package com.hundsun.xuxp10575.utils;
 
 import java.util.TimerTask;
 
-import com.hundsun.xuxp10575.service.AssignEnum;
-import com.hundsun.xuxp10575.service.AssignMangager;
+import com.hundsun.xuxp10575.service.IAssignSvr;
 
 
 public class AssignTask extends TimerTask 
 {
+	IAssignSvr assignsvr;
+	public void setAssignsvr(IAssignSvr assignsvr) {
+		this.assignsvr = assignsvr;
+	}
 	@Override
 	public void run() 
 	{
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
-		(new AssignMangager(AssignEnum.YMQAssignSvr)).Assign();
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		assignsvr.Assign();
 	}
 
 }

@@ -11,13 +11,26 @@ import com.hundsun.xuxp10575.beans.ActivityTime;
 import com.hundsun.xuxp10575.beans.VipUser;
 import com.hundsun.xuxp10575.beans.YMQApply;
 import com.hundsun.xuxp10575.constant.ApplyStatus;
-import com.hundsun.xuxp10575.dao.hibernateQuery;
+import com.hundsun.xuxp10575.dao.BaseDao;
 
 public class YMQApplySvr implements IApplySvr
 {
-	private hibernateQuery<YMQApply> hQuery = new hibernateQuery<YMQApply>(); 
-	private hibernateQuery<VipUser> hQuery2 = new hibernateQuery<VipUser>();
-	private QryManager qryManager = new QryManager();
+	private BaseDao<YMQApply> ymqapplyDao;
+	private BaseDao<VipUser> vipuserDao;
+	private QryManager qryManager;
+
+	public void setYmqapplyDao(BaseDao<YMQApply> ymqapplyDao) {
+		this.ymqapplyDao = ymqapplyDao;
+	}
+
+	public void setVipuserDao(BaseDao<VipUser> vipuserDao) {
+		this.vipuserDao = vipuserDao;
+	}
+
+	public void setQryManager(QryManager qryManager) {
+		this.qryManager = qryManager;
+	}
+
 	public boolean AddApply(String employno,int timeno)
 	{
 		YMQApply apply = null;
@@ -30,7 +43,7 @@ public class YMQApplySvr implements IApplySvr
 		}
 		List<SimpleExpression> filters = new LinkedList<SimpleExpression>();
 		filters.add(Restrictions.eq("employno", employno));
-		List<VipUser> lists = hQuery2.DoQuery(filters,new VipUser());
+		List<VipUser> lists = vipuserDao.DoQuery(filters,new VipUser());
 		if(lists.size() > 0)
 			apply.setVipflag('1');
 		else
@@ -45,9 +58,9 @@ public class YMQApplySvr implements IApplySvr
 		apply.setApplydate(new Date());
 		apply.setEmployno(employno);
 		if(flag)
-			return hQuery.DoAdd(apply);
+			return ymqapplyDao.DoAdd(apply);
 		else
-			return hQuery.DoUpdate(apply);
+			return ymqapplyDao.DoUpdate(apply);
 	}
 	
 	public boolean CancelApply(String employno)	
@@ -60,7 +73,7 @@ public class YMQApplySvr implements IApplySvr
 			if(apply.getApplystatus().equals(ApplyStatus.APPLYSUBMIT))
 			{
 				apply.setApplystatus(ApplyStatus.APPLYCANCEL);			
-				return hQuery.DoUpdate(apply);				
+				return ymqapplyDao.DoUpdate(apply);				
 			}
 		}
 		return false;

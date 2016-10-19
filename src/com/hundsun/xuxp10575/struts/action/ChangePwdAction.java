@@ -1,24 +1,64 @@
 package com.hundsun.xuxp10575.struts.action;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-
 import com.hundsun.xuxp10575.service.LoginManager;
-import com.hundsun.xuxp10575.struts.form.ChangePwdForm;
 import com.hundsun.xuxp10575.struts.form.ReturnInfo2;
+import com.opensymphony.xwork2.ActionSupport;
 
-import net.sf.json.JSONObject;
-
-public class ChangePwdAction extends Action 
+@SuppressWarnings("serial")
+public class ChangePwdAction extends ActionSupport 
 {
-
+	private LoginManager mgr;
+	private String name;
+	private String oldpwd;
+	private String newpwd;
+	private ReturnInfo2 returnInfo;
+	
+	public void setMgr(LoginManager mgr) {
+		this.mgr = mgr;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getOldpwd() {
+		return oldpwd;
+	}
+	public void setOldpwd(String oldpwd) {
+		this.oldpwd = oldpwd;
+	}
+	public String getNewpwd() {
+		return newpwd;
+	}
+	public void setNewpwd(String newpwd) {
+		this.newpwd = newpwd;
+	}	
+	public ReturnInfo2 getReturnInfo() {
+		return returnInfo;
+	}
+	public void setReturnInfo2(ReturnInfo2 returnInfo) {
+		this.returnInfo = returnInfo;
+	}
 	@Override
-	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+	public String execute() throws Exception
+	{
+		returnInfo = new ReturnInfo2();
+		if(mgr.ChangePassword(name, newpwd, oldpwd) == 0)
+		{
+			returnInfo.setError_code("0");
+			returnInfo.setError_info("修改密码成功");
+		}
+		else
+		{
+			returnInfo.setError_code("-52");
+			returnInfo.setError_info("原密码错误！");
+		}
+		return SUCCESS;
+	}
+
+	
+	/**public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception 
 	{
 		// TODO �Զ���ɵķ������
@@ -48,5 +88,5 @@ public class ChangePwdAction extends Action
 		response.getWriter().write(jsondata.toString());	
 		return super.execute(mapping, form, request, response);
 	}
-
+	*/
 }

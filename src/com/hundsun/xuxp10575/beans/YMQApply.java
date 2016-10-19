@@ -2,7 +2,7 @@ package com.hundsun.xuxp10575.beans;
 
 import java.util.Date;
 
-public class YMQApply 
+public class YMQApply extends Object
 {
 	private String applyno;
 	private Date applydate;
@@ -53,5 +53,25 @@ public class YMQApply
 	}
 	public void setActivitytime(ActivityTime activityTime) {
 		this.activitytime = activityTime;
+	}
+	
+	@Override
+	public boolean equals(Object obj) 
+	{
+		if(this == obj)
+			return true;
+		if(obj instanceof YMQApply)
+		{
+			YMQApply apply2 = (YMQApply)obj;
+			if(apply2.getApplyno().equals(this.getApplyno()))
+				return true;
+		}
+		return false;
+	}
+	@Override
+	public int hashCode() 
+	{
+		return Integer.valueOf(this.getApplyno());
 	}	
+	
 }

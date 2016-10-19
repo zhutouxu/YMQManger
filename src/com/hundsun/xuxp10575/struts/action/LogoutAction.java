@@ -1,30 +1,28 @@
 package com.hundsun.xuxp10575.struts.action;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.struts2.ServletActionContext;
 
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-
+import com.hundsun.xuxp10575.utils.MyLog;
 import com.hundsun.xuxp10575.utils.SessionAttribute;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class LogoutAction extends Action 
+@SuppressWarnings("serial")
+public class LogoutAction extends ActionSupport 
 {
-
 	@Override
-	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception 
+	public String execute() throws Exception 
 	{
+		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession(false);
+		
 		if(session != null)
 		{
+			MyLog.LogInfo(session.getAttribute(SessionAttribute.USER_ID).toString() + "is LogOut");
 			session.removeAttribute(SessionAttribute.USER_ID);
 		}
-		// TODO 自动生成的方法存根
-		return super.execute(mapping, form, request, response);
+		return SUCCESS;
 	}
 	
 }

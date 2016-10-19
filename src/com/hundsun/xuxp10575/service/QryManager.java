@@ -8,58 +8,66 @@ import com.hundsun.xuxp10575.beans.ActivityTime;
 import com.hundsun.xuxp10575.beans.YMQApply;
 import com.hundsun.xuxp10575.beans.YMQAssignResult;
 import com.hundsun.xuxp10575.beans.YMQField;
-import com.hundsun.xuxp10575.dao.hibernateQuery;
+import com.hundsun.xuxp10575.dao.BaseDao;
 import com.hundsun.xuxp10575.utils.TimeParse;
 
 public class QryManager 
 {
-	private hibernateQuery<ActivityTime>  hQuery = null;
-	private hibernateQuery<YMQApply> hQuery2 = null;
-	private hibernateQuery<YMQAssignResult> hQuery3 = null;
-	private hibernateQuery<YMQField> hQuery4 = null;
+	private BaseDao<ActivityTime>  timeDao = null;
+	private BaseDao<YMQApply> ymqapplyDao = null;
+	private BaseDao<YMQAssignResult> ymqresultDao = null;
+	private BaseDao<YMQField> ymqfieldDao = null;
 	
+	public void setTimeDao(BaseDao<ActivityTime> timeDao) {
+		this.timeDao = timeDao;
+	}
+
+	public void setYmqapplyDao(BaseDao<YMQApply> ymqapplyDao) {
+		this.ymqapplyDao = ymqapplyDao;
+	}
+
+	public void setYmqresultDao(BaseDao<YMQAssignResult> ymqresultDao) {
+		this.ymqresultDao = ymqresultDao;
+	}
+
+	public void setYmqfieldDao(BaseDao<YMQField> ymqfieldDao) {
+		this.ymqfieldDao = ymqfieldDao;
+	}
+
 	public List<ActivityTime> QryActivityTime(int timeno)
 	{
 		String Hql = null;
-		if(hQuery == null)			
-			hQuery = new hibernateQuery<ActivityTime>();
 		if(timeno != 0)
 			Hql = "from ActivityTime where timeno="+String.valueOf(timeno);
 		else
 		    Hql = "from ActivityTime";
-		return hQuery.DoQuery(Hql);
+		return timeDao.DoQuery(Hql);
 	}
 	
 	public List<YMQField> QryYMQField(int fieldno)
 	{
 		String Hql = null;
-		if(hQuery4 == null)			
-			hQuery4 = new hibernateQuery<YMQField>();
 		if(fieldno != 0)
-			Hql = "from YMQField where fieldno="+String.valueOf(fieldno);
+			Hql = "from YMQField where enable='1' and fieldno="+String.valueOf(fieldno);
 		else
-		    Hql = "from YMQField";
-		return hQuery4.DoQuery(Hql);
+		    Hql = "from YMQField where enable='1'";
+		return ymqfieldDao.DoQuery(Hql);
 	}
 	
 	public List<YMQApply> QryApply(String employno)
 	{
-		if(hQuery2 == null)	
-			hQuery2 = new hibernateQuery<YMQApply>();
 		String Hql = "from YMQApply where employno = " + employno;
-		return hQuery2.DoQuery(Hql);		
+		return ymqapplyDao.DoQuery(Hql);		
 	}
 	
 	public List<YMQAssignResult> QryAssignResult(String employno)
 	{
-		if(hQuery3 == null)	
-			hQuery3 = new hibernateQuery<YMQAssignResult>();
-		if(employno == null)
+		if(employno == null || employno.isEmpty())
 		{
-			return hQuery3.DoQuery("from YMQAssignResult");
+			return ymqresultDao.DoQuery("from YMQAssignResult");
 		}
 		String Hql = "from YMQAssignResult where employno = " + employno;
-		return hQuery3.DoQuery(Hql);
+		return ymqresultDao.DoQuery(Hql);
 				
 	}
 	
@@ -84,9 +92,7 @@ public class QryManager
 	{
 		String nowtime = TimeParse.parseHHmm(new Date());
 		String hql = "from ActivityTime";
-		if(hQuery == null)
-			hQuery = new hibernateQuery<ActivityTime>();
-		List<ActivityTime> times = hQuery.DoQuery(hql);
+		List<ActivityTime> times = timeDao.DoQuery(hql);
 		for(ActivityTime time :times)
 		{
 			String begin_time = TimeParse.parseHHmm(time.getBegintime());

@@ -48,10 +48,12 @@
   <!-- Struts1 configuration end -->
 	
   <!-- Spring配置 -->
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-
+  <listener>
+	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.hundsun.xuxp10575.utils.MyListener</listener-class>
+  </listener>
   <!-- 指定Spring Bean的配置文件所在目录。默认配置在WEB-INF目录下 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -76,7 +78,4 @@
     <filter-name>EncodeFilter</filter-name>
     <url-pattern>/index.html</url-pattern>
   </filter-mapping>
-  <listener>
-    <listener-class>com.hundsun.xuxp10575.utils.MyListener</listener-class>
-  </listener>
 </web-app>

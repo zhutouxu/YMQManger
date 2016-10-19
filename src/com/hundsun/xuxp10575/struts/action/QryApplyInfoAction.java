@@ -3,42 +3,39 @@
 import java.util.Calendar;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-
 import com.hundsun.xuxp10575.beans.ActivityTime;
 import com.hundsun.xuxp10575.beans.YMQApply;
 import com.hundsun.xuxp10575.beans.YMQAssignResult;
 import com.hundsun.xuxp10575.constant.ApplyStatus;
 import com.hundsun.xuxp10575.service.QryManager;
 import com.hundsun.xuxp10575.struts.form.ReturnInfo;
-import com.hundsun.xuxp10575.struts.form.YMQSignInForm;
 import com.hundsun.xuxp10575.utils.TimeParse;
+import com.opensymphony.xwork2.ActionSupport;
 
-import net.sf.json.JSONObject;
-
-public class QryApplyInfoAction extends Action 
+@SuppressWarnings("serial")
+public class QryApplyInfoAction extends ActionSupport 
 {
-
+	private String userId;
+	private QryManager qryManager;
+	private ReturnInfo returnInfo;
+	public void setQryManager(QryManager qryManager) {
+		this.qryManager = qryManager;
+	}
+	public ReturnInfo getReturnInfo() {
+		return returnInfo;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}	
 	@Override
-	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception 
+	public String execute() throws Exception 
 	{
-		String UserId = null;
-		YMQSignInForm userform = (YMQSignInForm)form;
-		if(userform != null)
-		{
-			UserId = userform.getUserId();
-		}
 		String return_msg=null,return_code = null;		
-		//String UserId = request.getSession().getAttribute("userid").toString();
-		QryManager manager = new QryManager();
-		List<YMQApply> lists = manager.QryApply(UserId);
+		
+		List<YMQApply> lists = qryManager.QryApply(userId);
 		if(lists.size() == 0)
 		{
 			return_code = "1000";
@@ -61,7 +58,7 @@ public class QryApplyInfoAction extends Action
 				}
 				else
 				{
-					List<YMQAssignResult> results = manager.QryAssignResult(UserId);
+					List<YMQAssignResult> results = qryManager.QryAssignResult(userId);
 					if(results.size() == 0)
 					{
 						return_code = "1000";
@@ -77,14 +74,11 @@ public class QryApplyInfoAction extends Action
 				}
 			}
 		}
-		ReturnInfo returnInfo = new ReturnInfo();
+		returnInfo = new ReturnInfo();
 		returnInfo.setReturn_msg(return_msg);
 		returnInfo.setReturn_code(return_code);
-		JSONObject jsondata = JSONObject.fromObject(returnInfo);
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write(jsondata.toString());			
-		// TODO 自动生成的方法存根
-		return super.execute(mapping, form, request, response);
+
+		return SUCCESS; 
 	}
 	
 	//全部都是取消的委托，返回true，否则返回false

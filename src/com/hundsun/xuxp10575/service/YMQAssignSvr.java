@@ -9,34 +9,43 @@ import com.hundsun.xuxp10575.beans.ActivityTime;
 import com.hundsun.xuxp10575.beans.YMQApply;
 import com.hundsun.xuxp10575.beans.YMQAssignResult;
 import com.hundsun.xuxp10575.beans.YMQField;
-import com.hundsun.xuxp10575.dao.hibernateQuery;
+import com.hundsun.xuxp10575.dao.BaseDao;
 import com.hundsun.xuxp10575.constant.ApplyStatus;
 import com.hundsun.xuxp10575.constant.SignStatus;
 
 public class YMQAssignSvr implements IAssignSvr
 {
-	private hibernateQuery<YMQApply> hQuery1 = new hibernateQuery<YMQApply>();
-	private hibernateQuery<YMQField> hQuery2 =  new hibernateQuery<YMQField>();
-	private hibernateQuery<ActivityTime> hQuery3 = new hibernateQuery<ActivityTime>();
-	private hibernateQuery<YMQAssignResult> hQuery4 = new hibernateQuery<YMQAssignResult>();
+	private BaseDao<YMQApply> ymqapplyDao;
+	private BaseDao<YMQAssignResult> ymqresultDao;
+	private QryManager qryManager;
 	
-	public boolean SignIn(YMQAssignResult assignResult)
-	{
-		return hQuery4.DoUpdate(assignResult);
+	public void setYmqapplyDao(BaseDao<YMQApply> ymqapplyDao) {
+		this.ymqapplyDao = ymqapplyDao;
 	}
+
+	public void setYmqresultDao(BaseDao<YMQAssignResult> ymqresultDao) {
+		this.ymqresultDao = ymqresultDao;
+	}
+
+	public void setQryManager(QryManager qryManager) {
+		this.qryManager = qryManager;
+	}
+
+	/**public boolean SignIn(YMQAssignResult assignResult)
+	{
+		return ymqresultDao.DoUpdate(assignResult);
+	}*/
 	public void Assign() 
 	{
 		int Vipfieldnum = 0, Ordfieldnum = 0, Assignnum = 0;
 		int vipfielduplimit = 0,ordfielduplimit = 0;
 		List<YMQApply> viplists,ordlists;
 		Set<YMQApply> applysets;
-		String hql = null;
 		if(CheckBefore() == false)
 			return;
-		hql = "from YMQField y where y.enable = '1' order by y.fieldno";
-		List<YMQField> fieldlists = hQuery2.DoQuery(hql);
-		hql = "from ActivityTime a";
-		List<ActivityTime> times = hQuery3.DoQuery(hql);
+		//hql = "from YMQField y where y.enable = '1' order by y.fieldno";
+		List<YMQField> fieldlists = qryManager.QryYMQField(0);
+		List<ActivityTime> times = qryManager.QryActivityTime(0);
 		for (int i = 0; i < times.size(); i++) {
 			applysets = times.get(i).getYmqapply();
 			viplists = new ArrayList<YMQApply>();			
@@ -48,7 +57,7 @@ public class YMQAssignSvr implements IAssignSvr
 				else
 				if(apply.getVipflag() == '0' && apply.getApplystatus().equals(ApplyStatus.APPLYSUBMIT))
 					ordlists.add(apply);
-			}			
+			}
 			if (viplists.size() >= 10) {
 				Vipfieldnum = 2;
 			} else {
@@ -77,8 +86,7 @@ public class YMQAssignSvr implements IAssignSvr
 	
 	private boolean CheckBefore()
 	{
-		QryManager qryManager = new QryManager();
-		if(qryManager.QryAssignResult(null).size() > 0)
+		if(qryManager.QryAssignResult("").size() > 0)
 			return false;
 		else
 			return true;
@@ -118,7 +126,7 @@ public class YMQAssignSvr implements IAssignSvr
 				assignindex++;
 			}
 		}
-		hQuery4.DoBatchAdd(assignResults);
+		ymqresultDao.DoBatchAdd(assignResults);
 	}
 	
 	private void UpdateApplyStatus(List<YMQApply> totalapply,List<Integer> assignindexlist)
@@ -131,6 +139,6 @@ public class YMQAssignSvr implements IAssignSvr
 		{
 			totalapply.get(assignindexlist.get(i).intValue()).setApplystatus(ApplyStatus.APPLYSUCCESS);
 		}
-		hQuery1.DoBatchUpdate(totalapply);
+		ymqapplyDao.DoBatchUpdate(totalapply);
 	}
 }

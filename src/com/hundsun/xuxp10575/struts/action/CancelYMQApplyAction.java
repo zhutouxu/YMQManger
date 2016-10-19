@@ -1,36 +1,32 @@
 package com.hundsun.xuxp10575.struts.action;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-
-import com.hundsun.xuxp10575.service.ApplyEnum;
-import com.hundsun.xuxp10575.service.ApplyManager;
+import com.hundsun.xuxp10575.service.IApplySvr;
 import com.hundsun.xuxp10575.struts.form.ReturnInfo;
-import com.hundsun.xuxp10575.struts.form.YMQSignInForm;
-import net.sf.json.JSONObject;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class CancelYMQApplyAction extends Action 
+@SuppressWarnings("serial")
+public class CancelYMQApplyAction extends ActionSupport 
 {
-
+	private IApplySvr applysvr;
+	private String userId;
+	private ReturnInfo returnInfo;
+	public ReturnInfo getReturnInfo() {
+		return returnInfo;
+	}
+	public void setApplysvr(IApplySvr applysvr) {
+		this.applysvr = applysvr;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	@Override
-	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception 
+	public String execute() throws Exception 
 	{
-		YMQSignInForm ymqSignInForm = (YMQSignInForm)form;
-		String userId = null,authUserId = null;		
-		ReturnInfo returnInfo = new ReturnInfo();
-		if(ymqSignInForm != null)
-		{
-			userId = ymqSignInForm.getUserId();
-			authUserId = ymqSignInForm.getAuthUserId();
-		}
-		ApplyManager applyManager = new ApplyManager(ApplyEnum.YMQApplySvr);
-		//String userid = request.getSession().getAttribute(SessionAttribute.USER_ID).toString();
-		if(applyManager.CancelApply(userId))
+		returnInfo = new ReturnInfo();
+		if(applysvr.CancelApply(userId))
 		{
 			returnInfo.setReturn_code("0");
 			returnInfo.setReturn_msg("取消报名成功");			
@@ -40,11 +36,7 @@ public class CancelYMQApplyAction extends Action
 			returnInfo.setReturn_code("-1");
 			returnInfo.setReturn_msg("取消报名失败");		
 		}
-		JSONObject jsondata = JSONObject.fromObject(returnInfo);
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write(jsondata.toString());
-		// TODO �Զ���ɵķ������
-		return super.execute(mapping, form, request, response);
+		return SUCCESS;
 	}
 
 }
